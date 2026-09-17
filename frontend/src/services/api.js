@@ -43,14 +43,32 @@ class ApiService {
     }
   }
 
-  // Auth
-  async getMe() {
-    return this.request("/auth/me");
-  }
+  
+ // Auth
+async getMe() {
+  return this.request("/auth/me");
+}
 
-  getGoogleAuthUrl() {
-    return `${this.baseUrl}/auth/google`;
-  }
+async sendOTP(name, email, phone) {
+  return this.request("/auth/send-otp", {
+    method: "POST",
+    body: JSON.stringify({ name, email, phone }),
+    auth: false,
+  });
+}
+
+async verifyOTP(email, otp) {
+  return this.request("/auth/verify-otp", {
+    method: "POST",
+    body: JSON.stringify({ email, otp }),
+    auth: false,
+  });
+}
+
+getGoogleAuthUrl() {
+  return `${this.baseUrl}/auth/google`;
+}
+ 
 
   // Trips
   async submitTrip(tripData) {

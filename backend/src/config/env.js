@@ -1,12 +1,10 @@
 const requiredEnvVars = [
   "MONGODB_URI",
   "JWT_SECRET",
-  "GOOGLE_CLIENT_ID",
-  "GOOGLE_CLIENT_SECRET",
-  "GOOGLE_CALLBACK_URL",
   "FRONTEND_URL",
+  "EMAIL_USER",
+  "EMAIL_PASS",
 ];
-
 const validateEnv = () => {
   const missing = requiredEnvVars.filter((key) => !process.env[key]);
 
